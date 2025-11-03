@@ -16,12 +16,13 @@ const UserRegister = () => {
 
   const formSubmit = (data) => {
     data.id = nanoid();
+    data.isAdmin = false;
 
     dispach(asyncUserRegistration(data));
 
     reset();
      
-    
+
   };
 
   return (
@@ -53,8 +54,8 @@ const UserRegister = () => {
           <button
             className="text-2xl py-3 px-5 font-semibold border-[#adadad] border-2 rounded-xl text-[#37353E] hover:border-[#37353E] active:scale-95"
             type="submit"
-          >
-            Register
+          > 
+           Register
           </button>
 
           <div className="flex gap-1">

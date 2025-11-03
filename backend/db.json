@@ -29,7 +29,7 @@
       "username": "adminLala",
       "email": "admin@lala.com",
       "password": "LalaAdmin",
-      "isAdmin" : true
+      "isAdmin": true
     }
   ]
 }

@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { asyncUserLogin } from "../../store/actions/userAction";
 
 const LoginUser = () => {
+  const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
@@ -10,7 +13,7 @@ const LoginUser = () => {
   } = useForm();
 
   const formSubmit = (data) => {
-    console.log(data);
+    dispatch(asyncUserLogin(data));
 
     reset();
   };
