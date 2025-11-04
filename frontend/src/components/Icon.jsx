@@ -47,12 +47,12 @@ export const ErrorIcon = () => (
 // InfoIcon.jsx
 export const InfoIcon = () => (
   <svg
-    width="28"
-    height="28"
+    width="30"
+    height="32"
     viewBox="0 0 28 28"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
-    className="text-blue-500"
+    className="text-amber-500"
   >
     <circle cx="14" cy="14" r="12" fill="currentColor" opacity="0.1"/>
     <circle cx="14" cy="14" r="12" stroke="currentColor" strokeWidth="2"/>

@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import axios from "../../APIs/axios";
 import {
   showCustomToast,
-  showCustomToastBtn,
 } from "../../components/Notification";
 import { loadUser } from "../reducers/userSlice";
 
@@ -37,7 +36,7 @@ export const asyncUserDets = () => async (dispatch, getState) => {
     const user = JSON.parse(localStorage.getItem("user"));
     user
       ? dispatch(loadUser(user))
-      : showCustomToastBtn("Trying to login?", () => {}, "info");
+      : showCustomToast("Login to continue", "info");
   } catch (error) {
     console.log(error);
   }
