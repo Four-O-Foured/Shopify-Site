@@ -11,16 +11,30 @@
       "views": 200
     }
   ],
-  "comments": [
+  "products": [
     {
       "id": "1",
-      "text": "a comment about post 1",
-      "postId": "1"
+      "name": "Fjallraven - Foldsack No. 1 Backpack, Fits 15 inches, Laptops ",
+      "price": "350",
+      "description": "Your perfect pack for everyday use and walks in the forest. Stash your laptop (up to 15 inches) in the padded sleeve, your everyday",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_t.png"
+    },
+    {
+      "id": "APqb8jwUnD4C7LbrfEgPV",
+      "image": "https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&q=80&w=2010",
+      "name": "Woolen Sweater",
+      "price": "105",
+      "category": "Women's clothing",
+      "description": "e4bwrtgrt tbhrb"
     },
     {
       "id": "2",
-      "text": "another comment about post 1",
-      "postId": "1"
+      "name": "Mens Casual Premium Slim Fit T-Shirts ",
+      "price": "253",
+      "description": "Slim-fitting style, contrast raglan long sleeve, three-button henley placket, light weight & soft fabric for breathable and comfortable wearing. And Solid stitched shirts with round neck made for durability and a great fit for casual fashion wear and diehard baseball fans. The Henley style round neckline includes a three-button placket.",
+      "category": "men's clothing",
+      "image": "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_t.png"
     }
   ],
   "users": [

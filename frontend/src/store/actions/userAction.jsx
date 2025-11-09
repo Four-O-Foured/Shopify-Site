@@ -1,11 +1,6 @@
-import { useNavigate } from "react-router-dom";
 import axios from "../../APIs/axios";
-import {
-  showCustomToast,
-} from "../../components/Notification";
+import { showCustomToast } from "../../components/Notification";
 import { loadUser } from "../reducers/userSlice";
-
-
 
 export const asyncUserLogin = (user) => async (dispatch, getState) => {
   try {
@@ -16,8 +11,12 @@ export const asyncUserLogin = (user) => async (dispatch, getState) => {
     console.log(data[0]);
 
     {
-      user && showCustomToast("User logged in successfully", "success");
+      data[0] && showCustomToast("User logged in successfully", "success");
       localStorage.setItem("user", JSON.stringify(data[0]));
+    }
+
+    {
+      !data[0] && showCustomToast("User not found", "error");
     }
   } catch (error) {
     console.log(error);
@@ -46,8 +45,6 @@ export const asyncUserRegistration = (data) => async (dispatch, getState) => {
   try {
     const res = await axios.post("/users", data);
     showCustomToast("User registered successfully", "success");
-    const navigate = useNavigate();
-    navigate("/login");
   } catch (error) {
     console.log(error);
   }

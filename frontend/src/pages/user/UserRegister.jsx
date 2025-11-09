@@ -1,11 +1,10 @@
 import { nanoid } from "nanoid";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { asyncUserRegistration } from "../../store/actions/userAction";
 
 const UserRegister = () => {
-
   const dispach = useDispatch();
   const {
     register,
@@ -13,16 +12,15 @@ const UserRegister = () => {
     reset,
     formState: { errors },
   } = useForm();
-
+  const navigate = useNavigate();
   const formSubmit = (data) => {
+    navigate("/login");
     data.id = nanoid();
     data.isAdmin = false;
 
     dispach(asyncUserRegistration(data));
 
     reset();
-     
-
   };
 
   return (
@@ -54,8 +52,8 @@ const UserRegister = () => {
           <button
             className="text-2xl py-3 px-5 font-semibold border-[#adadad] border-2 rounded-xl text-[#37353E] hover:border-[#37353E] active:scale-95"
             type="submit"
-          > 
-           Register
+          >
+            Register
           </button>
 
           <div className="flex gap-1">

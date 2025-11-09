@@ -3,16 +3,18 @@ import Nav from "./components/Nav";
 import MainRoutes from "./routes/MainRoutes";
 import { useEffect } from "react";
 import { asyncUserDets } from "./store/actions/userAction";
+import { asyncLoadProduct } from "./store/actions/productActions";
 
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(asyncUserDets());
-  }, []);
+    dispatch(asyncLoadProduct());
+  }, [ dispatch ]);
   return (
     <div className="w-screen h-min-screen bg-[#FFFDF6]">
-      <div className="px-[8%] py-3">
+      <div className=" px-[8%] py-3">
         <Nav />
         <MainRoutes />
       </div>
