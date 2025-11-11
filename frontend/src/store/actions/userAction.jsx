@@ -1,6 +1,6 @@
 import axios from "../../APIs/axios";
 import { showCustomToast } from "../../components/Notification";
-import { loadUser } from "../reducers/userSlice";
+import { loadUser, removeUser } from "../reducers/userSlice";
 
 export const asyncUserLogin = (user) => async (dispatch, getState) => {
   try {
@@ -26,6 +26,8 @@ export const asyncUserLogin = (user) => async (dispatch, getState) => {
 export const asyncUserLogOut = (user) => async (dispatch, getState) => {
   try {
     localStorage.removeItem("user");
+    showCustomToast("User logged out successfully", "success");
+    dispatch(removeUser());
   } catch (error) {
     console.log(error);
   }
@@ -43,7 +45,7 @@ export const asyncUserDets = () => async (dispatch, getState) => {
 
 export const asyncUserRegistration = (data) => async (dispatch, getState) => {
   try {
-    const res = await axios.post("/users", data);
+    await axios.post("/users", data);
     showCustomToast("User registered successfully", "success");
   } catch (error) {
     console.log(error);

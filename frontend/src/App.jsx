@@ -11,9 +11,9 @@ function App() {
   useEffect(() => {
     dispatch(asyncUserDets());
     dispatch(asyncLoadProduct());
-  }, [ dispatch ]);
+  }, []);
   return (
-    <div className="w-screen h-min-screen bg-[#FFFDF6]">
+    <div className="w-max-screen h-min-screen bg-[#FFFDF6]">
       <div className=" px-[8%] py-3">
         <Nav />
         <MainRoutes />

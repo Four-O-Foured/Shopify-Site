@@ -34,3 +34,13 @@ export const asyncUpdateProduct = (id, product) => async (dispatch, getState) =>
     console.log(error);
  }
 };
+
+export const asyncDeleteProduct = (id) => async (dispatch, getState) => {
+ try {
+   await axios.delete(`/products/${id}`);
+    showCustomToast("Product deleted successfully", "success");
+    dispatch(asyncLoadProduct());
+ } catch (error) {
+    console.log(error);
+ }
+};

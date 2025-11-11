@@ -1,27 +1,36 @@
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { asyncUserLogin } from "../../store/actions/userAction";
 
-const LoginUser = () => {
+const UserProfile = () => {
+  const user = useSelector((state) => state.users.user);
   const dispatch = useDispatch();
   const {
     register,
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: {
+      email: user?.email,
+      password: user?.password,
+    },
+  });
   const navigate = useNavigate();
 
   const formSubmit = (data) => {
-    dispatch(asyncUserLogin(data));
-    navigate("/");
-
     reset();
   };
   return (
-    <div className="mt-20">
-      <form onSubmit={handleSubmit(formSubmit)}>
+    <div className="max-w-screen mt-20">
+      <form onSubmit={handleSubmit(formSubmit)} className="max-w-screen">
+        <input
+          className="text-4xl p-3 block w-1/2 mt-15 text-[#37353E] font-semibold outline-none border-b-2 border-[#e6e5e5] focus:border-b-2 focus:border-[#37353E]"
+          {...register("email", { required: "Email is required" })}
+          type="username"
+          placeholder="Username"
+        />
+        <p className="text-red-400 my-1">{errors.email?.message}</p>
         <input
           className="text-4xl p-3 block w-1/2 mt-15 text-[#37353E] font-semibold outline-none border-b-2 border-[#e6e5e5] focus:border-b-2 focus:border-[#37353E]"
           {...register("email", { required: "Email is required" })}
@@ -44,18 +53,10 @@ const LoginUser = () => {
           >
             Login
           </button>
-
-          <div className="flex gap-1">
-          
-            <h1 className="text-xl">Don't have an account?</h1>
-            <Link to="/register" className="text-md mt-1 underline text-cyan-600">
-              <h1>Register</h1>
-            </Link>
-          </div>
         </div>
       </form>
     </div>
   );
 };
 
-export default LoginUser;
+export default UserProfile;

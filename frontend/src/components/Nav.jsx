@@ -1,9 +1,12 @@
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 
+
 const Nav = () => {
-  const user = useSelector((state) => state.users.data);
- 
+  const user = useSelector((state) => state.users.user);
+
+
+
 
   return (
     <nav className="text-xl flex justify-center gap-8 text-[#37353E] font-semibold p-7">
@@ -15,14 +18,7 @@ const Nav = () => {
       >
         Home
       </NavLink>
-      <NavLink
-        className={({ isActive }) =>
-          isActive ? "text-[#37353E] border-b-2 border-[#37353E]" : ""
-        }
-        to="/products"
-      >
-        Products
-      </NavLink>
+
       {!user && (
         <NavLink
           className={({ isActive }) =>
@@ -34,7 +30,7 @@ const Nav = () => {
         </NavLink>
       )}
 
-      {user.isAdmin && (
+      {user?.isAdmin && (
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-[#37353E] border-b-2 border-[#37353E]" : ""
@@ -42,6 +38,17 @@ const Nav = () => {
           to="/admin/createProduct"
         >
           Create Product
+        </NavLink>
+      )}
+
+      {user && (
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-[#37353E] border-b-2 border-[#37353E]" : ""
+          }
+          to="/user/userprofile"
+        >
+          Settings
         </NavLink>
       )}
     </nav>
