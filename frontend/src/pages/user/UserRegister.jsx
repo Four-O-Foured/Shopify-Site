@@ -17,6 +17,7 @@ const UserRegister = () => {
     navigate("/login");
     data.id = nanoid();
     data.isAdmin = false;
+    data.cart = [];
 
     dispach(asyncUserRegistration(data));
 

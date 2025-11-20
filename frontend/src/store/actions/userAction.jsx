@@ -8,11 +8,10 @@ export const asyncUserLogin = (user) => async (dispatch, getState) => {
       `/users?email=${user.email}&password=${user.password}`
     );
 
-    console.log(data[0]);
-
     {
       data[0] && showCustomToast("User logged in successfully", "success");
       localStorage.setItem("user", JSON.stringify(data[0]));
+      dispatch(asyncUserDets());
     }
 
     {
@@ -23,10 +22,9 @@ export const asyncUserLogin = (user) => async (dispatch, getState) => {
   }
 };
 
-export const asyncUserLogOut = (user) => async (dispatch, getState) => {
+export const asyncUserLogOut = () => async (dispatch, getState) => {
   try {
     localStorage.removeItem("user");
-    showCustomToast("User logged out successfully", "success");
     dispatch(removeUser());
   } catch (error) {
     console.log(error);
@@ -47,6 +45,25 @@ export const asyncUserRegistration = (data) => async (dispatch, getState) => {
   try {
     await axios.post("/users", data);
     showCustomToast("User registered successfully", "success");
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const asyncUpdateUser = (id, user) => async (dispatch, getState) => {
+  try {
+    const { data } = await axios.patch(`/users/${id}`, user);
+    localStorage.setItem("user", JSON.stringify(data)); 
+    dispatch(asyncUserDets());
+  } catch (error) {
+    console.log(error);
+  }
+};
+export const asyncDeleteUser = (id) => async (dispatch, getState) => {
+  try {
+    await axios.delete(`/users/${id}`);
+    showCustomToast("User deleted successfully", "success");
+    dispatch(asyncUserLogOut());
   } catch (error) {
     console.log(error);
   }

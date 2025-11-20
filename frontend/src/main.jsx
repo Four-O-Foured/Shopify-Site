@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import { store } from "./store/store.jsx";
 import { Provider } from "react-redux";
 import { ToastContainer, Zoom } from "react-toastify";
+import 'remixicon/fonts/remixicon.css'
 
 createRoot(document.getElementById("root")).render(
   <Provider store={store}>

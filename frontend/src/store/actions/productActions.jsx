@@ -15,10 +15,12 @@ export const asyncCreateProduct = (product) => async (dispatch, getState) => {
 
 export const asyncLoadProduct = () => async (dispatch, getState) => {
  try {
+
    const {data} = await axios.get("/products");
-   console.log(data);
+   
    
    dispatch(loadProduct(data));
+   
  } catch (error) {
     console.log(error);
     
@@ -28,7 +30,7 @@ export const asyncLoadProduct = () => async (dispatch, getState) => {
 export const asyncUpdateProduct = (id, product) => async (dispatch, getState) => {
  try {
    await axios.patch(`/products/${id}`, product);
-    showCustomToast("Product updated successfully", "success");
+    showCustomToast("Product updated successfully", "success"); 
     dispatch(asyncLoadProduct());
  } catch (error) {
     console.log(error);
@@ -39,7 +41,7 @@ export const asyncDeleteProduct = (id) => async (dispatch, getState) => {
  try {
    await axios.delete(`/products/${id}`);
     showCustomToast("Product deleted successfully", "success");
-    dispatch(asyncLoadProduct());
+     
  } catch (error) {
     console.log(error);
  }

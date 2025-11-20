@@ -1,9 +1,12 @@
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { asyncUserLogin } from "../../store/actions/userAction";
+import { useEffect } from "react";
 
 const LoginUser = () => {
+  const user = useSelector((state) => state.users.user);
+  useEffect(() => {if(user) navigate("/");}, [user]);
   const dispatch = useDispatch();
   const {
     register,
@@ -19,7 +22,7 @@ const LoginUser = () => {
 
     reset();
   };
-  return (
+  return !user ? (
     <div className="mt-20">
       <form onSubmit={handleSubmit(formSubmit)}>
         <input
@@ -48,14 +51,15 @@ const LoginUser = () => {
           <div className="flex gap-1">
           
             <h1 className="text-xl">Don't have an account?</h1>
-            <Link to="/register" className="text-md mt-1 underline text-cyan-600">
+            <Link to="/register" className="text-md flex gap-1 underline items-center text-cyan-600">
+            <i className="ri-user-add-fill text-xl"></i>
               <h1>Register</h1>
             </Link>
           </div>
         </div>
       </form>
     </div>
-  );
+  ): <h1 className="text-4xl text-[#37353E]">Rredirecting...</h1>;
 };
 
 export default LoginUser;
